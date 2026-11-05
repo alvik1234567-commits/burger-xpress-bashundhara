@@ -24,7 +24,7 @@
       <a href="#best">Bestsellers</a>
       <a href="#wings">Wing Lab</a>
       <a href="#menu">Menu</a>
-      <a href="#visit">Visit</a>
+      <a href="#visit">Branches</a>
     </nav>
     <button class="order-btn" id="cartOpen" aria-label="Open your order">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
@@ -105,17 +105,20 @@
 <!-- VISIT -->
 <section class="visit" id="visit">
   <div class="wrap visit-in">
-    <div>
+    <div class="br-side">
       <p class="kicker">Come hungry</p>
-      <h2>Find us in Bashundhara</h2>
-      <dl class="info">
-        <div><dt>Address</dt><dd>492 Apollo Hospital Road (beside Auto Xpress), Vatara, Dhaka 1229</dd></div>
-        <div><dt>Hours</dt><dd>Daily, 12 PM – 11 PM</dd></div>
-        <div><dt>Delivery</dt><dd>Order here, on foodpanda, or call us</dd></div>
-      </dl>
-      <a class="btn-line" href="https://www.google.com/maps/search/?api=1&query=23.80835627,90.42946557" target="_blank" rel="noopener">Get directions ↗</a>
+      <h2><span id="brCount">11</span> kitchens across Dhaka</h2>
+      <p class="br-lede">Same menu, same heat, all over the city. Pick the one closest to you.</p>
+      <ul class="branches" id="branches"></ul>
     </div>
-    <div class="map"><iframe title="Burger Xpress on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=23.80835627,90.42946557&output=embed"></iframe></div>
+    <div class="br-map">
+      <div class="map"><iframe id="mapFrame" title="Burger Xpress on Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=23.80835627,90.42946557&z=16&output=embed"></iframe></div>
+      <div class="br-card">
+        <div><b id="brName">Bashundhara</b><span id="brAddr">492 Apollo Hospital Road (beside Auto Xpress), Vatara</span></div>
+        <a class="btn-line" id="brDir" href="https://www.google.com/maps/search/?api=1&query=23.80835627,90.42946557" target="_blank" rel="noopener">Directions ↗</a>
+      </div>
+      <p class="br-hours">Open daily, 12 PM – 11 PM · Order here, on foodpanda, or call your branch</p>
+    </div>
   </div>
 </section>
 </main>

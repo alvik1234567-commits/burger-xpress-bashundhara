@@ -176,6 +176,33 @@
       { duration: 700, easing: "cubic-bezier(.5,0,.3,1)" }).onfinish = () => g.remove();
   }
 
+  // ---------- branches (from foodpanda listings) ----------
+  const BRANCHES = [
+    ["Bashundhara", "492 Apollo Hospital Road (beside Auto Xpress), Vatara", 23.80835627, 90.42946557],
+    ["Baily Road", "1 New Baily Road", 23.7418792, 90.4107042],
+    ["Banani", "House 33, Road 17, Block E, Abdul Alim Nakib Road (behind Banani kacha bazar)", 23.79286059, 90.40787773],
+    ["Dhanmondi", "2 Circular Road, beside Kalabagan Thana, opposite Dhanmondi Jame Masjid", 23.743216, 90.388077],
+    ["Sukrabad", "95 Sukrabad, Dhanmondi (opposite Lalbag Biryani)", 23.7529433, 90.378131],
+    ["Mirpur 10", "House 1, Lane 4, Block B, Section 10, Mirpur (beside Nanna Biryani)", 23.8095725, 90.3704625],
+    ["Shewrapara", "265/1 West Shewrapara, by Metro Rail pillar 320", 23.7886336, 90.3764574],
+    ["Mohammadpur", "House Y, 8 Noorjahan Road (near Mohammadpur Girls' High School)", 23.76230335, 90.3613271],
+    ["Uttara 14", "ShamsunNehar Tower, 1st floor, 71 Gausul Azam Avenue, Sector 14", 23.869175, 90.385868],
+    ["Uttara 11", "Nurjahan Tower, House 24, Road 10/B, Sector 11 (lift 7)", 23.87882465, 90.39088945],
+    ["Wari", "Kurban Ali Plaza, 3rd floor, 4 Hare Street, Wari", 23.7182147, 90.41645535],
+  ];
+  $("#brCount").textContent = BRANCHES.length;
+  $("#branches").innerHTML = BRANCHES.map(([n, a], i) =>
+    `<li><button data-br="${i}" class="${i ? "" : "on"}"><b>${esc(n)}${i ? "" : '<em class="here">YOU\'RE HERE</em>'}</b><span>${esc(a)}</span></button></li>`).join("");
+  $("#branches").addEventListener("click", e => {
+    const b = e.target.closest("[data-br]"); if (!b) return;
+    const [n, a, lat, lng] = BRANCHES[+b.dataset.br];
+    $$("#branches button").forEach(x => x.classList.toggle("on", x === b));
+    $("#brName").textContent = n; $("#brAddr").textContent = a;
+    $("#brDir").href = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+    $("#mapFrame").src = `https://www.google.com/maps?q=${lat},${lng}&z=16&output=embed`;
+    if (innerWidth < 860) $(".br-map").scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
   $("#yr").textContent = new Date().getFullYear();
   render();
   requestAnimationFrame(() => requestAnimationFrame(() => $(".hero").classList.add("in")));
